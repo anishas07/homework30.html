@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <h1>Login Form with Age Validation</h1>
+</head>
+
+<body>
+    <form name="loginForm" onsubmit="validateForm(event)">
+        Name: <input type="text" name="name" required>
+        <br><br>
+        Age: <input type="number" name="age" min="18" max="30" required>
+        <br><br>
+        <input type="submit" value="Submit">
+        <br><br>
+    </form>
+
+    <p id="p1message"></p>
+    <p id="p2displayInfo"></p>
+    <script>
+        function validateForm() {
+            var name = document.forms["loginForm"]["name"].value;
+            var age = document.forms["loginForm"]["age"].value;
+
+            if (name == "") {
+                window.alert("Enter your name over here");
+            }
+        
+            if (age < 18) {
+                window.alert("You are underaged!");
+                document.getElementById("p1message").innerHTML = name; 
+                document.getElementById("p2displayInfo").innerHTML = name;
+            } else if (age >= 18 - age <= 30) {
+                document.getElementById("p1message").innerHTML = "You're age is perfect";
+                document.getElementById("p2displayInfo").innerHTML = "Name: " + name + "<br> Age: " + age;
+            } else {
+                window.alert("Age must be between 18 and 30.");
+                document.getElementById("p1message").innerHTML = name; 
+                document.getElementById("p2displayInfo").innerHTML = name; 
+            }
+        }
+    </script>
+ 
+</body>
+
+</html>
